@@ -16,7 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import bob.colbaskin.it_tech2025.common.MainViewModel
 import bob.colbaskin.it_tech2025.common.UiState
-import bob.colbaskin.it_tech2025.common.design_system.theme.HackathonTemplateTheme
+import bob.colbaskin.it_tech2025.common.design_system.theme.ITTech205Theme
 import bob.colbaskin.it_tech2025.common.user_prefs.data.models.UserPreferences
 import bob.colbaskin.it_tech2025.navigation.AppNavHost
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            HackathonTemplateTheme {
+            ITTech205Theme {
                 val isDarkTheme = isSystemInDarkTheme()
                 val insetsController = WindowInsetsControllerCompat(window, window.decorView)
 

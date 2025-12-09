@@ -19,8 +19,8 @@ interface Screens {
     data object Introduction: Screens
 
     @Serializable
-    data object SignIn: Screens
+    data object EmailInput: Screens
 
     @Serializable
-    data object SignUp: Screens
+    data class OTPScreen(val email: String): Screens
 }
