@@ -47,7 +47,7 @@ fun AppNavHost(uiState: UiState.Success<UserPreferences>) {
         }
     ) { innerPadding ->
         NavHost(
-            startDestination = Graphs.Onboarding, //getStartDestination(uiState.data.authStatus),
+            startDestination = getStartDestination(uiState.data.authStatus),
             navController = navController,
             modifier = Modifier.padding(innerPadding)
         ) {
