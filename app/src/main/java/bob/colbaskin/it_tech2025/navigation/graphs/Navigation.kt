@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.navigation
-import bob.colbaskin.it_tech2025.auth.presentation.sign_in.SignInScreenRoot
-import bob.colbaskin.it_tech2025.auth.presentation.sign_up.SignUpScreenRoot
+import bob.colbaskin.it_tech2025.auth.presentation.EmailScreenRoot
+import bob.colbaskin.it_tech2025.auth.presentation.otp.OtpScreenRoot
 import bob.colbaskin.it_tech2025.common.user_prefs.data.models.OnboardingConfig
 import bob.colbaskin.it_tech2025.navigation.Screens
 import bob.colbaskin.it_tech2025.navigation.animatedTransition
@@ -36,19 +36,19 @@ fun NavGraphBuilder.onboardingGraph(
         }
         animatedTransition<Screens.Introduction> {
             IntroductionScreen (
-                onNextScreen = { navController.navigate(Screens.SignIn) {
+                onNextScreen = { navController.navigate(Screens.EmailInput) {
                     popUpTo(Screens.Introduction) { inclusive = true }
                 }}
             )
         }
-        animatedTransition<Screens.SignIn> {
-            SignInScreenRoot(
+        animatedTransition<Screens.EmailInput> {
+            EmailScreenRoot(
                 navController = navController,
                 snackbarHostState = snackbarHostState
             )
         }
-        animatedTransition<Screens.SignUp> {
-            SignUpScreenRoot(
+        animatedTransition<Screens.OTPScreen> {
+            OtpScreenRoot(
                 navController = navController,
                 snackbarHostState = snackbarHostState
             )
@@ -85,10 +85,9 @@ fun NavGraphBuilder.mainGraph(
     }
 }
 
-
 private fun getStartDestination(status: OnboardingConfig) = when (status) {
     OnboardingConfig.NOT_STARTED -> Screens.Welcome
     OnboardingConfig.IN_PROGRESS -> Screens.Introduction
-    OnboardingConfig.COMPLETED -> Screens.SignIn
+    OnboardingConfig.COMPLETED -> Screens.EmailInput
     else -> Screens.Welcome
 }

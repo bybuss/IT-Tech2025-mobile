@@ -45,8 +45,7 @@ object RepositoryModule {
     ): AuthRepository {
         return AuthRepositoryImpl(
             authApi = authApi,
-            userPreferences = userPreferences,
-            tokenManager = tokenManager
+            userPreferences = userPreferences
         )
     }
 
