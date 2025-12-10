@@ -133,4 +133,21 @@ dependencies {
 
     // Material Icons
     implementation(libs.androidx.material.icons.extended)
+
+    // Scanbot SDK
+    implementation(libs.scanbot.barcode.scanner.sdk)
+    implementation(libs.rtu.ui.v2.barcode)
+    implementation(libs.androidx.localbroadcastmanager)
+
+    // Для работы с PDF и изображениями
+    implementation(libs.androidx.exifinterface)
+
+    implementation(libs.androidx.activity.compose.v180)
+    implementation(libs.androidx.documentfile)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.paging)
+    implementation(libs.androidx.room.ktx)
 }
