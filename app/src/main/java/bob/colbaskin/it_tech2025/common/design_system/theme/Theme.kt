@@ -14,6 +14,7 @@ fun ITTech205Theme(
 
     CompositionLocalProvider(
         LocalColors provides colors,
+        LocalTypography provides typography,
         content = content
     )
 }
@@ -21,4 +22,6 @@ fun ITTech205Theme(
 object CustomTheme {
     val colors: AppColors
         @Composable get() = LocalColors.current
+    val typography: AppTypography
+        @Composable get() = LocalTypography.current
 }
