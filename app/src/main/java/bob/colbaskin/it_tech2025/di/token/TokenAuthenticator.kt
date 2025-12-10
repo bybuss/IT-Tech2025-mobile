@@ -18,7 +18,7 @@ class TokenAuthenticator @Inject constructor(
 ) : Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
-        if (response.code == 401) {
+        if (response.code == 401 || response.code == 500) {
             Log.d(TAG, "Unauthorized. Attempting to refresh token")
 
             val refreshResult = runBlocking {
