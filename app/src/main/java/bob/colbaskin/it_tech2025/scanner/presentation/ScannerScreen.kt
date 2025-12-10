@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import bob.colbaskin.it_tech2025.common.design_system.theme.CustomTheme
 import com.google.accompanist.permissions.PermissionState
 import bob.colbaskin.it_tech2025.R
+import bob.colbaskin.it_tech2025.navigation.Screens
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -56,6 +57,13 @@ fun ScannerScreenRoot(
                 viewModel.onAction(ScannerAction.OnCameraPermissionResult(false))
             }
             else -> {}
+        }
+    }
+
+    LaunchedEffect(state.selectedFileUri) {
+        state.selectedFileUri?.let { uri ->
+            navController.navigate(Screens.ImageAreaSelectionScreen(uri))
+            viewModel.onAction(ScannerAction.ClearSelectedFile)
         }
     }
 

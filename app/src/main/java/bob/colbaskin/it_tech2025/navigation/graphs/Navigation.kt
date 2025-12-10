@@ -18,6 +18,8 @@ import bob.colbaskin.it_tech2025.onboarding.presentation.IntroductionScreen
 import bob.colbaskin.it_tech2025.onboarding.presentation.WelcomeScreen
 import bob.colbaskin.it_tech2025.profile.presentation.ProfileScreenRoot
 import bob.colbaskin.it_tech2025.scanner.presentation.ScannerScreenRoot
+import bob.colbaskin.it_tech2025.scanner.presentation.image_selection.ImageAreaSelectionScreenRoot
+import bob.colbaskin.it_tech2025.verification_log.presentation.VerificationLogScreenRoot
 
 
 fun NavGraphBuilder.onboardingGraph(
@@ -70,16 +72,18 @@ fun NavGraphBuilder.mainGraph(
                 snackbarHostState = snackbarHostState
             )
         }
-        animatedTransition<Screens.SomeScreen> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("Some Screen")
-            }
+        animatedTransition<Screens.VerificationLogScreen> {
+            VerificationLogScreenRoot(
+                navController = navController
+            )
         }
         animatedTransition<Screens.Profile> {
             ProfileScreenRoot()
+        }
+        animatedTransition<Screens.ImageAreaSelectionScreen> {
+            ImageAreaSelectionScreenRoot(
+                navController = navController
+            )
         }
     }
 }
