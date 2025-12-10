@@ -1,5 +1,6 @@
 package bob.colbaskin.it_tech2025.di
 
+import android.content.Context
 import bob.colbaskin.it_tech2025.auth.data.AuthRepositoryImpl
 import bob.colbaskin.it_tech2025.auth.data.RefreshTokenRepositoryImpl
 import bob.colbaskin.it_tech2025.auth.domain.auth.AuthApiService
@@ -17,9 +18,15 @@ import bob.colbaskin.it_tech2025.scanner.data.local.ScannerResultDao
 import bob.colbaskin.it_tech2025.scanner.data.remote.DocumentApi
 import bob.colbaskin.it_tech2025.scanner.data.remote.ScannerRepositoryImpl
 import bob.colbaskin.it_tech2025.scanner.domain.ScannerRepository
+import bob.colbaskin.it_tech2025.verification_log.data.VerificationLogRepositoryImpl
+import bob.colbaskin.it_tech2025.verification_log.data.VerificationLogService
+import bob.colbaskin.it_tech2025.verification_log.data.encrypted_db.VerificationLogDao
+import bob.colbaskin.it_tech2025.verification_log.data.notifications.NotificationManager
+import bob.colbaskin.it_tech2025.verification_log.domain.VerificationLogRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
@@ -96,6 +103,24 @@ object RepositoryModule {
         return ScannerRepositoryImpl(
             documentApi = documentApi,
             scannerResultDao = scannerResultDao
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideVerificationLogService(retrofit: Retrofit): VerificationLogService {
+        return retrofit.create(VerificationLogService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideVerificationLogRepository (
+        verificationLogDao: VerificationLogDao,
+        verificationLogService: VerificationLogService
+    ): VerificationLogRepository {
+        return VerificationLogRepositoryImpl(
+            verificationLogDao = verificationLogDao,
+            verificationLogService = verificationLogService
         )
     }
 }

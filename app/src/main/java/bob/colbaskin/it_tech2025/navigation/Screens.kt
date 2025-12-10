@@ -7,7 +7,7 @@ interface Screens {
     data object ScannerScreen: Screens
 
     @Serializable
-    data object SomeScreen: Screens
+    data object VerificationLogScreen: Screens
 
     @Serializable
     data object Profile: Screens
@@ -23,4 +23,7 @@ interface Screens {
 
     @Serializable
     data class OTPScreen(val email: String): Screens
+
+    @Serializable
+    data class ImageAreaSelectionScreen (val imageUri: String): Screens
 }

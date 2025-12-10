@@ -1,6 +1,9 @@
 [versions]
 activityComposeVersion = "1.8.0"
 agp = "8.12.3"
+androidDatabaseSqlcipher = "4.5.4"
+biometric = "1.1.0"
+coilCompose = "2.7.0"
 documentfile = "1.1.0"
 exifinterface = "1.4.2"
 kotlin = "2.1.0"
@@ -36,6 +39,7 @@ hiltWork = "1.3.0"
 
 # Secrets
 secretsPlugin = "2.0.1"
+securityCrypto = "1.1.0"
 workRuntime = "2.11.0"
 
 # Network (Retrofit)
@@ -67,11 +71,15 @@ roomCompiler = "2.7.1"
 roomPaging = "2.7.1"
 
 [libraries]
+android-database-sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "androidDatabaseSqlcipher" }
 androidx-activity-compose-v180 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "documentfile" }
 androidx-exifinterface = { module = "androidx.exifinterface:exifinterface", version.ref = "exifinterface" }
 androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "localbroadcastmanager" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
