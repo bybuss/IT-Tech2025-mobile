@@ -6,47 +6,33 @@ import java.util.Date
 
 object ScannerResultMapper {
 
-    fun toEntity(
-        dto: DocumentCheckResponse,
-        hash: String,
-        scannedAt: Date = Date()
-    ): ScannerResultEntity {
+    fun toEntity(dto: DocumentCheckResponse): ScannerResultEntity {
         return ScannerResultEntity(
             documentId = dto.id,
-            hash = hash,
             status = dto.status,
             expirationDate = dto.expirationDate,
             createdAt = dto.createdAt,
             checkedAt = dto.checkedAt,
-            scannedAt = scannedAt
         )
     }
 
     fun toDomain(entity: ScannerResultEntity): ScannerResult {
         return ScannerResult(
             documentId = entity.documentId,
-            hash = entity.hash,
             status = entity.status,
             expirationDate = entity.expirationDate,
             createdAt = entity.createdAt,
-            checkedAt = entity.checkedAt,
-            scannedAt = entity.scannedAt
+            checkedAt = entity.checkedAt
         )
     }
 
-    fun toDomain(
-        dto: DocumentCheckResponse,
-        hash: String,
-        scannedAt: Date = Date()
-    ): ScannerResult {
+    fun toDomain(dto: DocumentCheckResponse): ScannerResult {
         return ScannerResult(
             documentId = dto.id,
-            hash = hash,
             status = dto.status,
             expirationDate = dto.expirationDate,
             createdAt = dto.createdAt,
-            checkedAt = dto.checkedAt,
-            scannedAt = scannedAt
+            checkedAt = dto.checkedAt
         )
     }
 }

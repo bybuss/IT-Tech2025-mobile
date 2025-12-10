@@ -42,7 +42,9 @@ object LocalModule {
             context,
             ScannerDatabase::class.java,
             ScannerDatabase.DATABASE_NAME
-        ).build()
+        )
+        .fallbackToDestructiveMigration()
+        .build()
     }
 
     @Provides

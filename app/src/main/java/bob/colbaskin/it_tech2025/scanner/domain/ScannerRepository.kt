@@ -7,5 +7,4 @@ interface ScannerRepository {
     suspend fun checkDocument(hash: String): ApiResult<ScannerResult>
     suspend fun saveScanResult(result: ScannerResult)
     suspend fun getAllScanResults(): List<ScannerResult>
-    suspend fun getLastResultByHash(hash: String): ScannerResult?
 }

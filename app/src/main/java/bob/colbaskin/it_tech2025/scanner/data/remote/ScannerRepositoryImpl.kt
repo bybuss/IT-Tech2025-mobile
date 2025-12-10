@@ -9,7 +9,6 @@ import bob.colbaskin.it_tech2025.scanner.data.models.ScannerResultMapper
 import bob.colbaskin.it_tech2025.scanner.domain.ScannerRepository
 import bob.colbaskin.it_tech2025.scanner.domain.models.ScannerResult
 import retrofit2.Response
-import java.util.Date
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -30,7 +29,7 @@ class ScannerRepositoryImpl @Inject constructor(
             },
             successHandler = { response ->
                 val dto = response.body()!!
-                val domainResult = ScannerResultMapper.toDomain(dto, hash, Date())
+                val domainResult = ScannerResultMapper.toDomain(dto)
                 saveScanResult(domainResult)
                 domainResult
             }
@@ -46,9 +45,7 @@ class ScannerRepositoryImpl @Inject constructor(
                     expirationDate = result.expirationDate,
                     createdAt = result.createdAt,
                     checkedAt = result.checkedAt
-                ),
-                result.hash,
-                result.scannedAt
+                )
             )
 
             scannerResultDao.insertResult(entity)
@@ -64,15 +61,6 @@ class ScannerRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e(TAG, "Error getting all scan results", e)
             emptyList()
-        }
-    }
-
-    override suspend fun getLastResultByHash(hash: String): ScannerResult? {
-        return try {
-            scannerResultDao.getLastResultByHash(hash)?.let { ScannerResultMapper.toDomain(it) }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error getting last result by hash", e)
-            null
         }
     }
 }

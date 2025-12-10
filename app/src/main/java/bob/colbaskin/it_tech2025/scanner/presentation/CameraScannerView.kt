@@ -1,18 +1,14 @@
 package bob.colbaskin.it_tech2025.scanner.presentation
 
-import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import io.scanbot.sdk.barcode.BarcodeFormat
-import io.scanbot.sdk.common.AspectRatio
 import io.scanbot.sdk.ui_v2.common.OrientationLockMode
 import io.scanbot.sdk.ui_v2.barcode.BarcodeScannerView
 import io.scanbot.sdk.ui_v2.barcode.configuration.BarcodeScannerScreenConfiguration
 import io.scanbot.sdk.ui_v2.common.ScanbotColor
-import io.scanbot.sdk.ui_v2.common.Vibration
-import io.scanbot.sdk.ui_v2.common.ViewFinderConfiguration
 
 @Composable
 fun CameraScannerView(
