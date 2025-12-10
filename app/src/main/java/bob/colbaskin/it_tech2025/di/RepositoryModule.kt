@@ -13,6 +13,10 @@ import bob.colbaskin.it_tech2025.di.token.TokenManager
 import bob.colbaskin.it_tech2025.profile.data.ProfileRepositoryImpl
 import bob.colbaskin.it_tech2025.profile.domain.ProfileRepository
 import bob.colbaskin.it_tech2025.profile.domain.ProfileService
+import bob.colbaskin.it_tech2025.scanner.data.local.ScannerResultDao
+import bob.colbaskin.it_tech2025.scanner.data.remote.DocumentApi
+import bob.colbaskin.it_tech2025.scanner.data.remote.ScannerRepositoryImpl
+import bob.colbaskin.it_tech2025.scanner.domain.ScannerRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -75,5 +79,23 @@ object RepositoryModule {
     @Singleton
     fun provideProfileRepository (profileApi: ProfileService): ProfileRepository {
         return ProfileRepositoryImpl(profileApi = profileApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDocumentApi(retrofit: Retrofit): DocumentApi {
+        return retrofit.create(DocumentApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideScannerRepository (
+        documentApi: DocumentApi,
+        scannerResultDao: ScannerResultDao
+    ): ScannerRepository {
+        return ScannerRepositoryImpl(
+            documentApi = documentApi,
+            scannerResultDao = scannerResultDao
+        )
     }
 }

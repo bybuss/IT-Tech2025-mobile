@@ -56,7 +56,8 @@ object RemoteModule {
     @Singleton
     fun provideOkHttpClient(
         @ApplicationContext context: Context,
-        tokenInterceptor: TokenInterceptor
+        tokenInterceptor: TokenInterceptor,
+        tokenAuthenticator: Provider<TokenAuthenticator>
     ): OkHttpClient {
         val cookieJar = PersistentCookieJar(
             SetCookieCache(),
@@ -65,7 +66,9 @@ object RemoteModule {
 
         return OkHttpClient.Builder()
             .cookieJar(cookieJar)
-            .addInterceptor(tokenInterceptor)
+            .authenticator { route, response ->
+                tokenAuthenticator.get().authenticate(route, response)
+            }
             .addInterceptor(HttpLoggingInterceptor().apply {
                 setLevel(HttpLoggingInterceptor.Level.BODY)
             })
