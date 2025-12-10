@@ -1,5 +1,8 @@
 [versions]
+activityComposeVersion = "1.8.0"
 agp = "8.12.3"
+documentfile = "1.1.0"
+exifinterface = "1.4.2"
 kotlin = "2.1.0"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -10,6 +13,7 @@ activityCompose = "1.11.0"
 composeBom = "2025.10.01"
 
 # Navigation
+localbroadcastmanager = "1.1.0"
 navigationCompose = "2.9.5"
 
 # Kotlin serialization
@@ -53,8 +57,21 @@ accompanistPager = "0.36.0"
 # Material Icons
 materialIconsCore = "1.7.8"
 
+# Scanbot SDK
+scanbotBarcodeScannerSdk = "7.1.2"
+rtuUiV2Barcode = "7.1.2"
+
+# Room
+roomRuntime = "2.7.1"
+roomCompiler = "2.7.1"
+roomPaging = "2.7.1"
+
 [libraries]
+androidx-activity-compose-v180 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "documentfile" }
+androidx-exifinterface = { module = "androidx.exifinterface:exifinterface", version.ref = "exifinterface" }
+androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "localbroadcastmanager" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -111,6 +128,15 @@ accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pa
 
 # Material Icons
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsCore" }
+
+rtu-ui-v2-barcode = { module = "io.scanbot:rtu-ui-v2-barcode", version.ref = "rtuUiV2Barcode" }
+scanbot-barcode-scanner-sdk = { module = "io.scanbot:scanbot-barcode-scanner-sdk", version.ref = "scanbotBarcodeScannerSdk" }
+
+# Room
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

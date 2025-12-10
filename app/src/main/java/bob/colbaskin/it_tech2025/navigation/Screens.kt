@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 interface Screens {
     @Serializable
-    data object Home: Screens
+    data object ScannerScreen: Screens
 
     @Serializable
     data object SomeScreen: Screens

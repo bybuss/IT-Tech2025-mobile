@@ -17,6 +17,7 @@ import bob.colbaskin.it_tech2025.navigation.animatedTransition
 import bob.colbaskin.it_tech2025.onboarding.presentation.IntroductionScreen
 import bob.colbaskin.it_tech2025.onboarding.presentation.WelcomeScreen
 import bob.colbaskin.it_tech2025.profile.presentation.ProfileScreenRoot
+import bob.colbaskin.it_tech2025.scanner.presentation.ScannerScreenRoot
 
 
 fun NavGraphBuilder.onboardingGraph(
@@ -61,15 +62,13 @@ fun NavGraphBuilder.mainGraph(
     snackbarHostState: SnackbarHostState
 ) {
     navigation<Graphs.Main>(
-        startDestination = Screens.Home
+        startDestination = Screens.ScannerScreen
     ) {
-        animatedTransition<Screens.Home> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("Home Screen")
-            }
+        animatedTransition<Screens.ScannerScreen> {
+            ScannerScreenRoot(
+                navController = navController,
+                snackbarHostState = snackbarHostState
+            )
         }
         animatedTransition<Screens.SomeScreen> {
             Box(

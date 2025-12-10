@@ -4,6 +4,7 @@ package bob.colbaskin.it_tech2025.navigation
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Screenshot
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -12,10 +13,10 @@ enum class Destinations(
     val label: String,
     val screen: Screens
 ) {
-    HOME(
-        icon = Icons.Default.Home,
+    SCANNER(
+        icon = Icons.Default.QrCodeScanner,
         label = "Home",
-        screen = Screens.Home
+        screen = Screens.ScannerScreen
     ),
     SOME_SCREEN(
         icon = Icons.Default.Screenshot,
