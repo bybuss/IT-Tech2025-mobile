@@ -58,21 +58,16 @@ fun EmailScreenRoot(
                 )
                 viewModel.resetAuthState()
             }
+            is UiState.Success<*> -> {
+                navController.navigate(Screens.OTPScreen(email = state.email))
+            }
             else -> {}
         }
     }
 
     EmailInputContent(
         state = state,
-        onAction = { action ->
-            when (action) {
-                is EmailInputAction.NavigateToOTPScreen -> {
-                    navController.navigate(Screens.OTPScreen(state.email))
-                }
-                else -> Unit
-            }
-            viewModel.onAction(action)
-        }
+        onAction = viewModel::onAction
     )
 }
 
@@ -84,7 +79,6 @@ private fun EmailInputContent(
 ) {
     val scrollState = rememberScrollState()
     val focusManager = LocalFocusManager.current
-
 
     Box(
         modifier = Modifier
@@ -142,9 +136,6 @@ private fun EmailInputContent(
                 .clip(RoundedCornerShape(50)),
             onClick = {
                 onAction(EmailInputAction.LoginByEmail(state.email))
-                if (state.authState is UiState.Success<*>) {
-                    onAction(EmailInputAction.NavigateToOTPScreen(email = state.email))
-                }
             },
             enabled = state.isValid,
             colors = IconButtonDefaults.filledIconButtonColors(
