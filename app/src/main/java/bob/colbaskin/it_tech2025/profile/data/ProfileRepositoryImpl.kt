@@ -8,6 +8,7 @@ import bob.colbaskin.it_tech2025.profile.data.models.toDomain
 import bob.colbaskin.it_tech2025.profile.domain.models.User
 import bob.colbaskin.it_tech2025.profile.domain.ProfileRepository
 import bob.colbaskin.it_tech2025.profile.domain.ProfileService
+import retrofit2.Response
 import javax.inject.Inject
 
 private const val  TAG = "Profile"
@@ -23,6 +24,17 @@ class ProfileRepositoryImpl @Inject constructor(
                 val user = response.toDomain()
                 Log.d(TAG, "User got successful: $user")
                 user
+            }
+        )
+    }
+
+    override suspend fun logout(): ApiResult<Unit> {
+        Log.d(TAG, "Attempting getting User")
+        return safeApiCall<Response<Unit>, Unit>(
+            apiCall = { profileApi.logout() },
+            successHandler = { response ->
+                Log.d(TAG, "User got logout")
+                response
             }
         )
     }

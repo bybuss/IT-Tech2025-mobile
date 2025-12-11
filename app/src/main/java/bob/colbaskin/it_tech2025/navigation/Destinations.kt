@@ -2,6 +2,7 @@ package bob.colbaskin.it_tech2025.navigation
 
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FormatListBulleted
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.QrCodeScanner
@@ -15,17 +16,17 @@ enum class Destinations(
 ) {
     SCANNER(
         icon = Icons.Default.QrCodeScanner,
-        label = "Home",
+        label = "Сканер",
         screen = Screens.ScannerScreen
     ),
-    SOME_SCREEN(
-        icon = Icons.Default.Screenshot,
-        label = "SomeScreen",
-        screen = Screens.SomeScreen
+    VERIFICATION_LOG(
+        icon = Icons.Default.FormatListBulleted,
+        label = "Журнал Валидаций",
+        screen = Screens.VerificationLogScreen
     ),
     PROFILE(
         icon = Icons.Default.Person,
-        label = "Profile",
+        label = "Профиль",
         screen = Screens.Profile
     )
 }

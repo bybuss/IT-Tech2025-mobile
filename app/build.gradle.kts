@@ -150,4 +150,12 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.ktx)
+    // Security
+    implementation(libs.androidx.security.crypto)
+    implementation(libs.android.database.sqlcipher)
+
+    // Biometric
+    implementation(libs.androidx.biometric)
+
+    implementation(libs.coil.compose)
 }

@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import bob.colbaskin.it_tech2025.common.UiState
 import bob.colbaskin.it_tech2025.common.toUiState
 import bob.colbaskin.it_tech2025.common.user_prefs.data.models.AuthConfig
 import bob.colbaskin.it_tech2025.common.user_prefs.domain.UserPreferencesRepository
@@ -38,6 +39,7 @@ class ProfileViewModel @Inject constructor(
 
     private fun loadUser() {
         viewModelScope.launch {
+            state = state.copy(userState = UiState.Loading)
             val user = profileRepository.getUser()
             state = state.copy(
                 userState = user.toUiState()
@@ -47,8 +49,10 @@ class ProfileViewModel @Inject constructor(
 
     private fun logout() {
         viewModelScope.launch {
+            state = state.copy(userState = UiState.Loading)
             userPreferencesRepository.saveAuthStatus(AuthConfig.NOT_AUTHENTICATED)
             tokenManager.cleatTokens()
+            profileRepository.logout()
         }
     }
 }

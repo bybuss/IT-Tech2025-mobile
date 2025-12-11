@@ -1,6 +1,7 @@
 package bob.colbaskin.it_tech2025
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +18,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import bob.colbaskin.it_tech2025.common.MainViewModel
 import bob.colbaskin.it_tech2025.common.UiState
 import bob.colbaskin.it_tech2025.common.design_system.theme.ITTech205Theme
+import bob.colbaskin.it_tech2025.common.permission.RequestNotificationPermission
 import bob.colbaskin.it_tech2025.common.user_prefs.data.models.UserPreferences
 import bob.colbaskin.it_tech2025.navigation.AppNavHost
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,6 +46,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ITTech205Theme {
+                RequestNotificationPermission(
+                    onPermissionGranted = {
+                        Log.i("MainActivity", "Permission Granted")
+                    },
+                    onPermissionDenied = {
+                        Log.i("MainActivity", "Permission Denied")
+                    }
+                )
+
                 val isDarkTheme = isSystemInDarkTheme()
                 val insetsController = WindowInsetsControllerCompat(window, window.decorView)
 
